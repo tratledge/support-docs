@@ -1,5 +1,4 @@
 # SparkPost support docs
-[![Build Status](https://travis-ci.org/SparkPost/support-docs.svg?branch=master)](https://travis-ci.org/SparkPost/support-docs)
 [![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
 
 Add some docs about contributing and the repo here.
