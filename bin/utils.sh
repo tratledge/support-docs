@@ -77,6 +77,9 @@ function print_section() {
 DEPLOY_ENV="false"
 WP_CONNECTION="false"
 
+echo "Bamboo build number is $bamboo_buildNumber"
+echo "Bamboo branch name is $bamboo_planRepository_branchName"
+
 if [ -z $bamboo_buildNumber ]; then
   if [ "$bamboo_planRepository_branchName" == "master" ]; then
     DEPLOY_ENV="PRODUCTION"
