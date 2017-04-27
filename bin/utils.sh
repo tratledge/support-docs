@@ -14,10 +14,11 @@ COLOR_BLUE="\033[0;36m"
 COLOR_NONE="\033[0m"
 NUMBER_PATTERN="^[0-9]+$"
 
-echo "previous revision is $bamboo_planRepository_previousRevision"
-echo "current revision is $bamboo_planRepository_revision"
-
-CHANGED_FILES=($(git diff --name-only $bamboo_planRepository_previousRevision...$bamboo_planRepository_revision -- ./articles))
+if [ "$bamboo_planRepository_branchName" == "master" ]; then
+  CHANGED_FILES=($(git diff --name-only $bamboo_planRepository_previousRevision...$bamboo_planRepository_revision -- ./articles))
+else
+  CHANGED_FILES=($(git diff --name-only master...$bamboo_planRepository_revision -- ./articles))
+fi
 
 if [ "$1" == "--all" ]; then
   CHANGED_FILES=($(find articles -type f))
