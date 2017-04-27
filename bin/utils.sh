@@ -15,9 +15,13 @@ COLOR_NONE="\033[0m"
 NUMBER_PATTERN="^[0-9]+$"
 
 if [ "$bamboo_planRepository_branchName" == "master" ]; then
+  echo "it is master"
   CHANGED_FILES=($(git diff --name-only $bamboo_planRepository_previousRevision...$bamboo_planRepository_revision -- ./articles))
+  echo "changed files: ${CHANGED_FILES[@]}"
 else
+  echo "it is $bamboo_planRepository_branchName"
   CHANGED_FILES=($(git diff --name-only master...$bamboo_planRepository_revision -- ./articles))
+  echo "changed files: ${CHANGED_FILES[@]}"
 fi
 
 if [ "$1" == "--all" ]; then

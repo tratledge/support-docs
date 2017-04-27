@@ -51,8 +51,6 @@ function generate_html() {
 
 print_section "now da articles"
 
-echo $CHANGED_FILES
-
 if [ ${#CHANGED_FILES[@]} -eq 0 ]; then
   echo "No changes to be made"
 fi
