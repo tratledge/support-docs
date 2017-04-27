@@ -1,6 +1,6 @@
 set -e
 
-if [ -z ${bamboo_buildNumber+x} ]; then
+if [ ! -z ${bamboo_buildNumber+x} ]; then
   source "$bamboo_working_directory/automation-scripts/shared/exports.sh"
 fi
 
