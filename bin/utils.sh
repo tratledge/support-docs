@@ -1,5 +1,9 @@
 set -e
 
+if [ -z ${bamboo_buildNumber+x} ]; then
+  source "$bamboo_working_directory/automation-scripts/shared/exports.sh"
+fi
+
 WP_USER="${WP_USER:-Support}"
 WP_POST_TYPE="${WP_POST_TYPE:-support_article}"
 WP_CUSTOM_TAX="${WP_CUSTOM_TAX:-support_category}"
