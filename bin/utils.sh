@@ -77,14 +77,14 @@ function print_section() {
 DEPLOY_ENV="false"
 WP_CONNECTION="false"
 
-if [ "$CI" != "true" ]; then
-  DEPLOY_ENV="DEVELOPMENT"
-else
-  if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+if [ -z ${bamboo_buildNumber+x} ]; then
+  if [ "$bamboo_planRepository_branchName" == "master" ]; then
     DEPLOY_ENV="PRODUCTION"
   else
     DEPLOY_ENV="STAGING"
   fi
+else
+  DEPLOY_ENV="DEVELOPMENT"
 fi
 
 eval "WP_CONNECTION=\$WP_$DEPLOY_ENV"
