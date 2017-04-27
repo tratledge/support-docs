@@ -77,17 +77,14 @@ function print_section() {
 DEPLOY_ENV="false"
 WP_CONNECTION="false"
 
-echo "Bamboo build number is $bamboo_buildNumber"
-echo "Bamboo branch name is $bamboo_planRepository_branchName"
-
-if [ -z $bamboo_buildNumber ]; then
+if [ -z ${bamboo_buildNumber+x} ]; then
+  DEPLOY_ENV="DEVELOPMENT"
+else
   if [ "$bamboo_planRepository_branchName" == "master" ]; then
     DEPLOY_ENV="PRODUCTION"
   else
     DEPLOY_ENV="STAGING"
   fi
-else
-  DEPLOY_ENV="DEVELOPMENT"
 fi
 
 eval "WP_CONNECTION=\$WP_$DEPLOY_ENV"
