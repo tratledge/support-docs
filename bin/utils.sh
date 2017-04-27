@@ -20,7 +20,7 @@ if [ "$bamboo_planRepository_branchName" == "master" ]; then
   echo "changed files: ${CHANGED_FILES[@]}"
 else
   echo "it is $bamboo_planRepository_branchName"
-  CHANGED_FILES=($(git diff --name-only master...$bamboo_planRepository_revision -- ./articles))
+  CHANGED_FILES=(`git diff --name-only master...$bamboo_planRepository_revision -- ./articles`)
   echo "changed files: ${CHANGED_FILES[@]}"
 fi
 
